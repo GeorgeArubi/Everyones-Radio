@@ -1,13 +1,14 @@
 import './navbar.css'
 import InstagramIcon from '@material-ui/icons/Instagram'
-import TwitterIcon from '@material-ui/icons/Twitter';
+import TwitterIcon from '@material-ui/icons/Twitter'
+import SearchIcon from '@material-ui/icons/Search'
 
 function NavBar() {
     return (
         <div className="top">
             <div className="topLeft">
-                <InstagramIcon />
-                <TwitterIcon />
+                <InstagramIcon className="topIcon"/>
+                <TwitterIcon className="topIcon"/>
             </div>
             <div className="topCenter">
                 <ul className="topList">
@@ -20,9 +21,11 @@ function NavBar() {
             </div>
             <div className="topRight">
                 <img
-                    src="https://github.com/GeorgeArubi/Everyones-Radio/blob/master/media_assets/Logo%202.PNG"
+                    src="https://images.pexels.com/photos/167092/pexels-photo-167092.jpeg?auto=compress&cs=tinysrgb&h=90&w=90"
                     alt="logo"
+                    className="topLogo"
                 />
+                <SearchIcon className="topSearch Icon"/>
             </div>
         </div>
     )
