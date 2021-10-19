@@ -21,7 +21,7 @@ function NavBar() {
             </div>
             <div className="topRight">
                 <img
-                    src="https://images.pexels.com/photos/167092/pexels-photo-167092.jpeg?auto=compress&cs=tinysrgb&h=90&w=90"
+                    src="https://raw.githubusercontent.com/GeorgeArubi/Everyones-Radio/aedec327cd94f18239885999531cac8f49bc735d/src/Images/artworks-r1B3QdPYeHm8qkJJ-BzzhGw-t500x500.jpg?token=AJVK7FYT3H6PX542MTB5YHDBN3WEW"
                     alt="logo"
                     className="topLogo"
                 />
