@@ -21,7 +21,7 @@ function NavBar() {
             </div>
             <div className="topRight">
                 <img
-                    src="https://raw.githubusercontent.com/GeorgeArubi/Everyones-Radio/aedec327cd94f18239885999531cac8f49bc735d/src/Images/artworks-r1B3QdPYeHm8qkJJ-BzzhGw-t500x500.jpg?token=AJVK7FYT3H6PX542MTB5YHDBN3WEW"
+                    src="https://www.teahub.io/photos/full/53-539118_overwatch-iphone-wallpaper-zenyatta.jpg"
                     alt="logo"
                     className="topLogo"
                 />
