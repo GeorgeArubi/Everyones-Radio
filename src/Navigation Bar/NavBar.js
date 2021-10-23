@@ -25,7 +25,7 @@ function NavBar() {
                     alt="logo"
                     className="topLogo"
                 />
-                <SearchIcon className="topSearch Icon"/>
+                <SearchIcon className="topSearchIcon"/>
             </div>
         </div>
     )
