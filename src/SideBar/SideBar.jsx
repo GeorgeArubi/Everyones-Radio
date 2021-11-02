@@ -1,11 +1,11 @@
-import './SideBar.css'
+import './sidebar.css'
 
-function SideBar() {
+function Sidebar() {
     return (
-        <div>
-            
+        <div className="sidebar">
+           sidebar 
         </div>
     )
 }
 
-export default SideBar
+export default Sidebar
