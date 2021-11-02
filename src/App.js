@@ -1,4 +1,4 @@
-import NavBar from "./Navigation Bar/navbar";
+import NavBar from "./Navigation Bar/NavBar";
 
 function App() {
   return (
