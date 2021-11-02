@@ -19,9 +19,39 @@
 .topCenter {
     flex: 6;
 }
+
+.topIcon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #444;
+    cursor: pointer;
+}
+
  .topLogo {
      height: 40px;
      width: 40px;
      border-radius: 50%;
      object-fit: cover;
+ }
+
+ .topList {
+     display: flex;
+     justify-content: center;
+     margin: 0;
+     padding: 0;
+     list-style: none;
+ }
+
+ .topListItem {
+     margin-right: 20px;
+     font-size: 18px;
+     font-weight: 300;
+     cursor: pointer;
+ }
+
+ .topSearchIcon {
+     font-size: 18px;
+     color: #666;
+     cursor: pointer;
+     margin-left: 15px;
  }
