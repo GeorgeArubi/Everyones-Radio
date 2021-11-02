@@ -1,4 +1,4 @@
-import './NavBar.css'
+import './navbar.css'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import SearchIcon from '@material-ui/icons/Search'
