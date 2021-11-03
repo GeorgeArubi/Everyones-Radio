@@ -15,6 +15,25 @@ function Sidebar() {
                     Ut praesentium, aliquam exercitationem nam consectetur asperiores nisi. 
                 </p>
             </div> 
+            <div className="sidebarItem">
+                <span className="sidebarTitle">CATEGORIES</span>
+                <ul className="sidebarList">
+                    <li className="sidebarListItem">Playlists</li>
+                    <li className="sidebarListItem">Artist Spotlight</li>
+                    <li className="sidebarListItem">Events</li>                        
+                    <li className="sidebarListItem">Radio Show</li>
+                    <li className="sidebarListItem">Music</li>
+                </ul>
+            </div>
+            <div className="sidebarItem">
+                <span className="sidebarTitle">FOLLOW US</span>
+                <div className="sidebarSocial">
+                    <i className="sidebarIcon fa-brands fa-instagram"></i>
+                    <i className="sidebarIcon fa-brands fa-twitter"></i>
+                    <i className="sidebarIcon fa-brands fa-itunes-note"></i>
+                    <i className="sidebarIcon fa-brands fa-spotify"></i>
+                </div> 
+            </div>
         </div>
     )
 }
