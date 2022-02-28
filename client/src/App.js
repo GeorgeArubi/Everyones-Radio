@@ -1,11 +1,11 @@
-import Home from './pages/home/Home'
-import NavBar from './navbar/NavBar'
+import { Home, NavBar, Register } from './components'
 
-function App() {
+const App = () => {
   return (
     <>
     <NavBar />
     <Home />
+    <Register />
     </>
   );
 }
