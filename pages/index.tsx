@@ -1,6 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Playlist from '../components/Playlist'
+import dynamic from 'next/dynamic'
+
+const Playlist = dynamic(() => import('../components/Playlist'), {
+  ssr: false
+})
+
 
 const Home: NextPage = () => {
   return (
