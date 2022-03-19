@@ -183,7 +183,7 @@ const app = new PIXI.Application({
   // auto adjust size to fit the current window
   resizeTo: window,
   // transparent background, we will be creating a gradient background later using CSS
-  transparent: true
+  backgroundAlpha: true
 });
 
 // Create colour palette
