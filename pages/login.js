@@ -14,13 +14,17 @@ const Login = ({ providers }) => {
         <div className="overlay__inner">
           <h1 className="overlay__title text-gradient">Everyone's Radio (Beta)</h1>
           <p className="overlay__description">
-            Welcome to ...
+            Welcome to the beginning of everything.
           </p>
         <div className="overlay__btns">
           <button className="overlay__btn overlay__btn--transparent">Apple Music</button>
             {Object.values(providers).map((provider) => (
               <div className="overlay__btn overlay__btn--colors" key={provider.name}>
-                <button className="spotify__login">{provider.name}</button>
+                <button className="spotify__login"
+                  onClick={() => signIn(provider.id, { callbackUrl: "/"})}
+                >
+                  {provider.name}
+                </button>
               </div>
             ))}
           </div>
