@@ -1,5 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
+import { signOut } from 'next-auth/react'
 
 const WebGL = dynamic(() => import('./WebGL'), {
   ssr: false
@@ -22,15 +23,16 @@ const Playlist = () => {
               <strong> About this project link</strong>
             </p>
             <div className="overlay__btns">
-              <button className="overlay__btn overlay__btn--transparent">
-                <a href="https://music.apple.com/us/playlist/sounds-like-anxiety/pl.u-mJy8Vd4ulRXDXz" target="_blank">
-                  Apple Music
-                </a>
+              <button className="overlay__btn overlay__btn--transparent"
+                onClick={() => signOut({ callbackUrl: "/login"})}
+              >
+                <span>Log Out</span>
               </button>
 
               <button className="overlay__btn overlay__btn--colors">
-                <span>Spotify</span>
-                <span className="overlay__btn-emoji">🎨</span>
+                <span href="https://music.apple.com/us/playlist/sounds-like-anxiety/pl.u-mJy8Vd4ulRXDXz" target="_blank">
+                  Apple Music
+                </span>
               </button>
             </div>
           </div>
