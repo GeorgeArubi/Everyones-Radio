@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import * as PIXI from 'pixi.js';
 import { KawaseBlurFilter } from '@pixi/filter-kawase-blur';
 import SimplexNoise from 'simplex-noise';
@@ -183,7 +184,7 @@ const app = new PIXI.Application({
   // auto adjust size to fit the current window
   resizeTo: window,
   // transparent background, we will be creating a gradient background later using CSS
-  backgroundAlpha: true
+  backgroundAlpha: false,
 });
 
 // Create colour palette
@@ -217,6 +218,7 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   });
 }
 
+/*
 document.querySelector(".overlay__btn--colors")
 document.addEventListener("click", () => {
     colorPalette.setColors();
@@ -226,10 +228,18 @@ document.addEventListener("click", () => {
       orb.fill = colorPalette.randomColor();
     });
   });
+*/
 
 const WebGL = () => {
   return (
-    <canvas className="orb-canvas"></canvas>
+    <>
+      <Head>
+        <title>Everyone's Radio</title>
+        <link rel="icon" href="/favicon-logo.png" />
+      </Head>
+      <canvas className="orb-canvas"></canvas>
+    </>
+    
   )
 }
 
