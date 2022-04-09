@@ -6,7 +6,12 @@ const WebGL = dynamic(() => import('../components/WebGL'), {
   ssr: false
 })
 
-const Login = ({ providers }) => {  
+const Login = ({ providers }) => {
+  const checkProviders = (
+    providers &&
+    providers.length
+ );
+
   return (
     <>
       <WebGL />
@@ -18,7 +23,7 @@ const Login = ({ providers }) => {
           </p>
         <div className="overlay__btns">
           <button className="overlay__btn overlay__btn--transparent">Apple Music</button>
-            {Object.values(providers).map((provider) => (
+            {checkProviders && Object.values(providers).map((provider) => (
               <div className="overlay__btn overlay__btn--colors" key={provider.name}>
                 <button className="spotify__login"
                   onClick={() => signIn(provider.id, { callbackUrl: "/"})}
