@@ -1,12 +1,14 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
 const WebGL = dynamic(() => import('./WebGL'), {
   ssr: false
 })
 
 const Playlist = () => {
+  const { data: session, status } = useSession()
+
   return (
     <>
       <WebGL />
