@@ -7,8 +7,6 @@ export async function middleware(req: NextRequest) {
   const token = await getToken({req: req as unknown as NextApiRequest, secret: process.env.JWT_SECRET!});
   const {pathname} = req.nextUrl;
 
-  
-
   // Allow the requests if the following is true.
   // 1) It's a request for next-auth session & provider fetching
   // 2) requesting public assets
