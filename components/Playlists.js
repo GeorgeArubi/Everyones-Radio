@@ -1,22 +1,14 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
 import { signOut, useSession } from 'next-auth/react'
-
-const WebGL = dynamic(() => import('./WebGL'), {
-  ssr: false
-})
 
 const Playlist = () => {
   const { data: session, status } = useSession()
 
   return (
     <>
-      <WebGL />
-      <div className="overlay">
         <div className="overlay__inner">
             <h1 className="overlay__title">
-              Everyone's Radio (Beta)
-              <span className="text-gradient"> Sounds Like Anxiety </span>
+              Hi,<span className="text-gradient"> @username </span>
             </h1>
             <p className="overlay__description">
               Hey @username, thank you for signing up for our playlist recommendation service (thank you message).
@@ -38,7 +30,6 @@ const Playlist = () => {
               </button>
             </div>
           </div>
-      </div>
     </>
   )
 }
