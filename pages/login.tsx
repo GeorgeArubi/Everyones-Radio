@@ -1,13 +1,12 @@
 import React from 'react'
-import {InferGetServerSidePropsType} from 'next';
-import { ClientSafeProvider, getProviders, signIn } from 'next-auth/react'
+import { getProviders, signIn } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 
 const WebGL = dynamic(() => import('../components/WebGL'), {
   ssr: false
 })
 
-const Login = ({providers}: {providers: InferGetServerSidePropsType<typeof getServerSideProps>}) => {
+const Login = ({providers}: any) => {
   return (
     <>
       <WebGL />
@@ -19,8 +18,7 @@ const Login = ({providers}: {providers: InferGetServerSidePropsType<typeof getSe
           </p>
         <div className="overlay__btns">
           <button className="overlay__btn overlay__btn--transparent">Apple Music</button>
-          {providers &&
-            (Object.values(providers) as unknown as ClientSafeProvider[]).map((provider: ClientSafeProvider) => (
+          {Object.values(providers).map((provider: any) => (
               <div className="overlay__btn overlay__btn--colors" key={provider.name}>
                 <button className="spotify__login"
                   onClick={() => signIn(provider.id, { callbackUrl: "/"})}
@@ -40,8 +38,10 @@ export default Login
 
 export async function getServerSideProps() {
   const providers = await getProviders()
-
+  console.log(`providers: ${providers}`)
   return {
-    props: {providers},
+    props: {
+      providers,
+    },
   }
 }
