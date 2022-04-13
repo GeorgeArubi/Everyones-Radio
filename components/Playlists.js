@@ -8,7 +8,7 @@ const Playlist = () => {
     <>
       <div className="overlay__inner">
           <h1 className="overlay__title">
-            Hi,<span className="text-gradient"> @username </span>
+            Hi,<span className="text-gradient"> {session?.user.name} </span>
           </h1>
           <p className="overlay__description">
              Hey @username, thank you for signing up for our playlist recommendation service (thank you message).
