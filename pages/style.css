@@ -28,7 +28,7 @@ html {
 body {
   max-width: 1920px;
   min-height: 100vh;
-  display: flex;
+  display: grid;
   place-items: center;
   align-items: center;
   justify-content: center;
