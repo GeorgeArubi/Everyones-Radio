@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     <>
       <WebGL />
       <div className="h-screen overflow-hidden">
-        <div className="
+        <main className="
           w-full h-5/6 px-6 py-8 
           flex items-center rounded-[2rem] 
         bg-white/[0.375] shadow-[0_0.75rem_2rem_0_rgba(0,0,0,0.1)]
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         >
           <Sidebar />
           <Playlists />
-        </div>
+        </main>
       </div>
     </>
     
