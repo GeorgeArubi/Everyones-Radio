@@ -2,7 +2,7 @@ import React from 'react'
 import { signOut, useSession } from 'next-auth/react'
 
 const Playlist = () => {
-  const { data: session, status } = useSession()
+  const { data: session } = useSession()
 
   return (
     <>

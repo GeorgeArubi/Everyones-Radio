@@ -17,7 +17,7 @@ const Sidebar = () => {
         }
     }, [session, spotifyApi])
 
-    //console.log("You picked playlist >>>", playlistId)
+    console.log("You picked playlist >>>", playlistId)
 
     return (
         <div className='text-gray-500 p-5
