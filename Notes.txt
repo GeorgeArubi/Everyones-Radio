@@ -1,0 +1,2 @@
+Can I use Recoil to store recommended playlists? 
+- i.e. an atom for an array of playlist id returned by the recommender engine
