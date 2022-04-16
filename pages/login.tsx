@@ -16,8 +16,6 @@ const Login = () => {
     })();
   }, []);
 
-
-
   return (
     <>
       <WebGL />
