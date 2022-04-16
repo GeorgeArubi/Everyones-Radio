@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { signOut, useSession } from 'next-auth/react'
 import { HomeIcon, SearchIcon, FolderIcon, PlusCircleIcon, HeartIcon, RssIcon } from '@heroicons/react/solid';
+import { signOut, useSession } from 'next-auth/react'
+import { useRecoilState } from 'recoil';
+import { playlistIdState } from '../atoms/playlistAtoms';
 import useSpotify from '../hooks/useSpotify';
 
 const Sidebar = () => {
   const spotifyApi = useSpotify();
   const { data: session } = useSession();
   const [playlists, setPlaylists] = useState<any[]>([]);
-  const [playlistId, setPlaylistId] = useState(null);
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
   
   useEffect(() => {
     const offsetArr = [0, 50];
@@ -26,7 +28,7 @@ const Sidebar = () => {
     }
   }, [session, spotifyApi])
 
-  // console.log("You picked playlist >>>", playlistId)
+  console.log("You picked playlist >>>", playlistId)
 
   return (
     <div className='text-gray-500 p-5
