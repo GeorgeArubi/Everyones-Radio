@@ -5,7 +5,7 @@ const Playlist = () => {
   const { data: session } = useSession()
 
   return (
-    <>
+    <div className="p-5">
       <div className="overlay__inner">
           <h1 className="overlay__title">
             Hi,<span className="text-gradient"> {session?.user.name} </span>
@@ -29,7 +29,7 @@ const Playlist = () => {
             </button>
           </div>
         </div>
-    </>
+    </div>
   )
 }
 
