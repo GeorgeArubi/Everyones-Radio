@@ -11,7 +11,7 @@ const WebGL = dynamic(() => import('./../components/WebGL'), {
 const Test: NextPage = () => {
   
   return (
-    <>
+    <>  
       <WebGL />
       <div className="h-screen overflow-hidden">
         <main className="
