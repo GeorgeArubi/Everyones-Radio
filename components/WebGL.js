@@ -177,59 +177,61 @@ class Orb {
   }
 }
 
-// Create PixiJS app
-const app = new PIXI.Application({
-  // render to <canvas class="orb-canvas"></canvas>
-  view: document.querySelector(".orb-canvas"),
-  // auto adjust size to fit the current window
-  resizeTo: window,
-  // transparent background, we will be creating a gradient background later using CSS
-  backgroundAlpha: false,
-});
 
-// Create colour palette
-const colorPalette = new ColorPalette();
+window.onload = () => {
+  // Create PixiJS app
+  const app = new PIXI.Application({
+    // render to <canvas class="orb-canvas"></canvas>
+    view: document.querySelector(".orb-canvas"),
+    // auto adjust size to fit the current window
+    resizeTo: window,
+    // transparent background, we will be creating a gradient background later using CSS
+    backgroundAlpha: false,
+  });
 
-app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
+  // Create colour palette
+  const colorPalette = new ColorPalette();
 
-// Create orbs
-const orbs = [];
+  app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
 
-for (let i = 0; i < 10; i++) {
-  const orb = new Orb(colorPalette.randomColor());
+  // Create orbs
+  const orbs = [];
 
-  app.stage.addChild(orb.graphics);
+  for (let i = 0; i < 10; i++) {
+    const orb = new Orb(colorPalette.randomColor());
 
-  orbs.push(orb);
-}
+    app.stage.addChild(orb.graphics);
 
-// Animate!
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  app.ticker.add(() => {
+    orbs.push(orb);
+  }
+
+  // Animate!
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    app.ticker.add(() => {
+      orbs.forEach((orb) => {
+        orb.update();
+        orb.render();
+      });
+    });
+  } else {
     orbs.forEach((orb) => {
       orb.update();
       orb.render();
     });
-  });
-} else {
-  orbs.forEach((orb) => {
-    orb.update();
-    orb.render();
-  });
-}
+  }
 
-/*
-document.querySelector(".overlay__btn--colors")
-document.addEventListener("click", () => {
-    colorPalette.setColors();
-    colorPalette.setCustomProperties();
+  /*
+  document.querySelector(".overlay__btn--colors")
+  document.addEventListener("click", () => {
+      colorPalette.setColors();
+      colorPalette.setCustomProperties();
 
-    orbs.forEach((orb) => {
-      orb.fill = colorPalette.randomColor();
+      orbs.forEach((orb) => {
+        orb.fill = colorPalette.randomColor();
+      });
     });
-  });
-*/
-
+  */
+}
 const WebGL = () => {
   return (
     <>
