@@ -65,9 +65,9 @@ const Sidebar = () => {
          </button>
          <hr className='border-t-[0.1px] border-gray-900' />
                 
-         {playlists.map((playlist) => (
+        {playlists.map((playlist) => (
           <p key={playlist.id} onClick={() => setPlaylistId(playlist.id)}className='cursor-pointer hover:text-white'>{playlist.name}</p>
-         ))}
+        ))}
 
         <div className="overlay__btns">
           <button className="overlay__btn overlay__btn--transparent"
