@@ -11,7 +11,7 @@ import { debounce } from 'debounce';
 
 const Player = () => {
   const spotifyApi = useSpotify();
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
   const [volume, setVolume] = useState(50)
@@ -21,7 +21,7 @@ const Player = () => {
   const fetchCurrentSong = useCallback(() => {
     if (!songInfo) {
       spotifyApi.getMyCurrentPlayingTrack().then(data => {
-        console.log("Now Playing: ", data.body?.item)
+        //console.log("Now Playing: ", data.body?.item)
         if (data.body?.item?.id) setCurrentTrackId(data.body?.item?.id)
 
         spotifyApi.getMyCurrentPlaybackState().then(data => {
