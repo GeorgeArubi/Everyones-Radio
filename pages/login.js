@@ -27,7 +27,7 @@ const Login = () => {
           </p>
         <div className="overlay__btns">
           <button className="overlay__btn overlay__btn--transparent">Apple Music</button>
-          {providers && Object.values(providers).map((provider: any) => (
+          {providers && Object.values(providers).map((provider) => (
               <div className="overlay__btn overlay__btn--colors" key={provider.name}>
                 <button className="spotify__login"
                   onClick={() => signIn(provider.id, { callbackUrl: "/"})}
