@@ -7,6 +7,7 @@ import useSongInfo from '../hooks/useSongInfo';
 
 import { FastForwardIcon, PauseIcon, PlayIcon, ReplyIcon, SwitchHorizontalIcon, RewindIcon, VolumeUpIcon } from '@heroicons/react/solid';
 import { VolumeOffIcon as VolumeDownIcon } from '@heroicons/react/outline';
+import { debounce } from 'debounce';
 
 const Player = () => {
   const spotifyApi = useSpotify();
@@ -54,6 +55,20 @@ const Player = () => {
     }
   }, [currentTrackIdState, spotifyApi, session])
   
+  useEffect(() => {
+    if (volume > 0 && volume < 100) {
+      debouncedAdjustVolume(volume)
+    }
+  }, [volume])
+
+  const debouncedAdjustVolume = useCallback(
+    debounce((volume: number) => {
+      spotifyApi.setVolume(volume).catch((err) => console.error(err))
+    }, 300),
+    []
+  )
+  
+
   return (
     <div className="
       w-full px-11 py-3 items-center rounded-xl 
@@ -97,15 +112,16 @@ const Player = () => {
       {/* Right */}
       <div className="flex items-center space-x-3
                       md:space-x-4 justify-end">
-        <VolumeDownIcon className="button h-6 w-6" />
+        <VolumeDownIcon onClick={() => volume > 0 && setVolume(volume - 10)} className="button h-6 w-6" />
         <input 
           className="w-14 md:w-28" 
           type="range" 
           value={volume} 
+          onChange={e => setVolume(Number(e.target.value))}
           min={0} 
           max={100} 
         />
-        <VolumeUpIcon className="button h-6 w-6" />
+        <VolumeUpIcon onClick={() => volume < 100 && setVolume(volume + 10)} className="button h-6 w-6" />
       </div>
     </div>
   )
