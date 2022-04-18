@@ -24,8 +24,8 @@ const Player = () => {
         //console.log("Now Playing: ", data.body?.item)
         if (data.body?.item?.id) setCurrentTrackId(data.body?.item?.id)
 
-        spotifyApi.getMyCurrentPlaybackState().then(data => {
-          setIsPlaying(data.body?.is_playing)
+        spotifyApi.getMyCurrentPlaybackState().then(playBackData => {
+          setIsPlaying(playBackData.body?.is_playing)
         })
       })
     }
@@ -58,13 +58,12 @@ const Player = () => {
   }, [volume])
 
   const debouncedAdjustVolume = useCallback(
-    debounce((volume: number) => {
-      spotifyApi.setVolume(volume).catch((err) => console.error(err))
+    debounce((volumeLevel) => {
+      spotifyApi.setVolume(volumeLevel).catch((err) => console.error(err))
     }, 300),
     []
   )
   
-
   return (
     <div className="
       w-full px-11 py-3 items-center rounded-xl 

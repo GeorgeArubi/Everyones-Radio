@@ -8,12 +8,12 @@ import useSpotify from '../hooks/useSpotify';
 const Sidebar = () => {
   const spotifyApi = useSpotify();
   const { data: session } = useSession();
-  const [playlists, setPlaylists] = useState<any[]>([]);
+  const [playlists, setPlaylists] = useState([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
   
   useEffect(() => {
     const offsetArr = [0, 50];
-    const playlistBatch: any[] = [];
+    const playlistBatch = [];
     if (spotifyApi.getAccessToken()) {
       offsetArr.forEach((item) => {
         spotifyApi.getUserPlaylists({offset: item, limit: 50}).then((data) => {
@@ -21,7 +21,7 @@ const Sidebar = () => {
           const userPlaylists = data.body.items.filter((playlist) => playlist.owner.id === session?.user?.username);                
           playlistBatch.push(userPlaylists)
           // Place playlists into state
-          const totalPlaylists: any[] = [].concat(...playlistBatch);
+          const totalPlaylists = [].concat(...playlistBatch);
           setPlaylists(totalPlaylists);
         });  
       })
