@@ -35,10 +35,10 @@ const Center = () => {
     .catch((err) => console.log("Something went wrong", err))
   }, [spotifyApi, playlistId]) // Use playlistId to refetch data
 
-  console.log(playlist)
+  //console.log(playlist)
 
   return (
-    <div className="flex-grow p-5 
+    <div className="flex-grow px-5 
     overflow-y-scroll h-full scrollbar-hide relative">
       <div className="absolute py-3 top-5 right-8">
         <div className="flex items-center bg-black space-x-3
@@ -55,7 +55,7 @@ const Center = () => {
       </div>
 
       <section className={`flex items-end space-x-7 
-      bg-gradient-to-b to-black ${color} h-80 text-white p-8`}>
+      bg-gradient-to-b to-black ${color} text-white p-8`}>
         <img className="h-44 w-44 shadow-2xl" src={playlist?.images?.[0]?.url} alt="Playlist Cover"/>
         <div>
           <p>PLAYLIST</p>
