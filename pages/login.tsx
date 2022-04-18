@@ -11,7 +11,7 @@ const Login = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await getProviders();
+      const res: any = await getProviders();
       setProviders(res);
     })();
   }, []);
@@ -27,7 +27,7 @@ const Login = () => {
           </p>
         <div className="overlay__btns">
           <button className="overlay__btn overlay__btn--transparent">Apple Music</button>
-          {providers && Object.values(providers).map((provider) => (
+          {providers && Object.values(providers).map((provider: any) => (
               <div className="overlay__btn overlay__btn--colors" key={provider.name}>
                 <button className="spotify__login"
                   onClick={() => signIn(provider.id, { callbackUrl: "/"})}
