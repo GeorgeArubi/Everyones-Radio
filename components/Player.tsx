@@ -20,10 +20,6 @@ const Player = () => {
 
   const fetchCurrentSong = useCallback(() => {
     if (!songInfo) {
-      spotifyApi.getMyDevices().then((data: any) => {
-        console.log(data)
-      })
-
       spotifyApi.getMyCurrentPlayingTrack().then(data => {
         console.log("Now Playing: ", data.body?.item)
         if (data.body?.item?.id) setCurrentTrackId(data.body?.item?.id)
