@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { getProviders, signIn  } from 'next-auth/react'
+import React from 'react'
+import {InferGetServerSidePropsType} from 'next';
+import { ClientSafeProvider, getProviders, signIn } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 
 const WebGL = dynamic(() => import('../components/WebGL'), {
   ssr: false
 })
 
-const Login = () => {
-  const [providers, setProviders] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const res: any = await getProviders();
-      setProviders(res);
-    })();
-  }, []);
-
+function Login({providers}: {providers: InferGetServerSidePropsType<typeof getServerSideProps>}) {
   return (
     <>
       <WebGL />
@@ -27,15 +19,20 @@ const Login = () => {
           </p>
         <div className="overlay__btns">
           <button className="overlay__btn overlay__btn--transparent">Apple Music</button>
-          {providers && Object.values(providers).map((provider: any) => (
-              <div className="overlay__btn overlay__btn--colors" key={provider.name}>
-                <button className="spotify__login"
-                  onClick={() => signIn(provider.id, { callbackUrl: "/"})}
+          {providers &&
+            (Object.values(providers) as unknown as ClientSafeProvider[]).map((provider: ClientSafeProvider) => (
+              <div className="overlay__btn" key={provider.name}>
+                <button
+                  onClick={() => {
+                    // https://developer.spotify.com/dashboard/applications/0e3eff139050415a9635bc8e4394622a
+                    // Spotify settings redirect uris: http://localhost:3000/api/auth/callback/spotify
+                    signIn(provider.id, {callbackUrl: '/'});
+                  }}
                 >
                   {provider.name}
                 </button>
               </div>
-            ))}
+          ))}
           </div>
         </div>
       </div>
@@ -44,3 +41,10 @@ const Login = () => {
 }
 
 export default Login
+
+export const getServerSideProps = async () => {
+  const providers = await getProviders()
+  return {
+    props: {providers},
+  }
+}
