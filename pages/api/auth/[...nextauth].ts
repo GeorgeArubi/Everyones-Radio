@@ -1,14 +1,15 @@
 import NextAuth from 'next-auth'
+import {JWT} from 'next-auth/jwt';
 import SpotifyProvider from 'next-auth/providers/spotify'
 import spotifyAPI, { LOGIN_URL } from '../../../lib/spotify'
 
 // Reference: Refresh Token Rotation https://next-auth.js.org/tutorials/refresh-token-rotation
 // Reference: TS defined = https://next-auth.js.org/getting-started/typescript
 
-async function refreshAccessToken(token: any) {
+async function refreshAccessToken(token: JWT) {
   try {
-    spotifyAPI.setAccessToken(token.accessToken)
-    spotifyAPI.setRefreshToken(token.refreshToken)
+    spotifyAPI.setAccessToken(token.accessToken as string)
+    spotifyAPI.setRefreshToken(token.refreshToken as string)
 
     const { body: refreshToken } = await spotifyAPI.refreshAccessToken()
     console.log('refreshToken: ', refreshToken)
@@ -32,18 +33,18 @@ export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     SpotifyProvider({
-      clientId: process.env.NEXT_PUBLIC_CLIENT_ID ?? '',
-      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET ?? '',
+      clientId: process.env.NEXT_PUBLIC_CLIENT_ID!,
+      clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET!,
       authorization: LOGIN_URL,
     }),
     // ...add more providers here
   ],
-  secret: process.env.JWT_SECRET ?? '',
+  secret: process.env.JWT_SECRET,
   pages: {
     signIn: '/login',
   },
   callbacks: {
-    async jwt({ token, account, user }: any) {
+    async jwt({ token, account, user }) {
       // Initial sign in.
       if (account && user)
         return {
@@ -51,16 +52,14 @@ export default NextAuth({
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
           username: account.providerAccountId,
-          accessTokenExpiresAt: account.expires_at
-            ? account.expires_at * 1000 ?? 3600 * 1000
-            : null, // Handle in milliseconds
+          accessTokenExpiresAt: account.expires_at! * 1000, // Handle in milliseconds
         }
 
       // Return previous token if the access token is still valid.
       if (
         token &&
         token.accessTokenExpires &&
-        Date.now() < token.accessTokenExpires
+        Date.now() < (token.accessTokenExpires as number)
       ) {
         return token
       }
