@@ -15,10 +15,9 @@ function Login({providers}: {providers: InferGetServerSidePropsType<typeof getSe
         <div className="overlay__inner">
           <h1 className="overlay__title text-gradient">Everyone's Radio (Beta)</h1>
           <p className="overlay__description">
-            Welcome to the beginning of everything.
+            Enhancing Playlist Recommendations & Music Discovery
           </p>
         <div className="overlay__btns">
-          <button className="overlay__btn overlay__btn--transparent">Apple Music</button>
           {providers &&
             (Object.values(providers) as unknown as ClientSafeProvider[]).map((provider: ClientSafeProvider) => (
               <div className="overlay__btn" key={provider.name}>
@@ -29,7 +28,7 @@ function Login({providers}: {providers: InferGetServerSidePropsType<typeof getSe
                     signIn(provider.id, {callbackUrl: '/'});
                   }}
                 >
-                  {provider.name}
+                  {provider.name} Login
                 </button>
               </div>
           ))}
