@@ -219,18 +219,16 @@ window.onload = () => {
       orb.render();
     });
   }
-
-  /*
-  document.querySelector(".overlay__btn--colors")
+  
+  // Change orb volor on click
   document.addEventListener("click", () => {
-      colorPalette.setColors();
-      colorPalette.setCustomProperties();
+    colorPalette.setColors();
+    colorPalette.setCustomProperties();
 
-      orbs.forEach((orb) => {
-        orb.fill = colorPalette.randomColor();
-      });
+    orbs.forEach((orb) => {
+      orb.fill = colorPalette.randomColor();
     });
-  */
+  });
 }
 const WebGL = () => {
   return (
