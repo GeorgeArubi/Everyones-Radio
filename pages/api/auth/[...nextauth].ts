@@ -69,10 +69,10 @@ export default NextAuth({
       // @ts-ignore
       return refreshAccessToken(token)
     },
-    async session({ session, token }: { session: any; token: any }) {
-      session.user.accessToken = token.accessToken // token.access token is HTTP only. Cannot be accessed by client. directly.
-      session.user.refreshToken = token.refreshToken
-      session.user.username = token.username
+    async session({ session, token }) {
+      session.accessToken = token.accessToken // token.access token is HTTP only. Cannot be accessed by client. directly.
+      session.refreshToken = token.refreshToken
+      session.username = token.username
 
       return session
     },
