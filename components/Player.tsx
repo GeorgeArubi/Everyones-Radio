@@ -14,7 +14,7 @@ const Player = () => {
   const { data: session } = useSession();
   const [currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
-  const [volume, setVolume] = useState(50)
+  const [volume, setVolume] = useState(100)
 
   const songInfo = useSongInfo()
 
@@ -31,6 +31,28 @@ const Player = () => {
     }
   }, [songInfo, spotifyApi, setIsPlaying, setCurrentTrackId])
 
+  useEffect(() => {
+    if (spotifyApi.getAccessToken() && !currentTrackId) {
+      // Fetch the song info
+      fetchCurrentSong()
+      setVolume(100)
+    }
+  }, [currentTrackIdState, fetchCurrentSong, spotifyApi, session])
+
+  const debounceAdjustVolume = useCallback(
+    (volumeLevel) =>
+      debounce((volumeLevel: any) => {
+       spotifyApi.setVolume(volumeLevel).catch((err) => console.error(err))
+      }, 300)(volumeLevel),
+    [spotifyApi]
+  )
+  
+  useEffect(() => {
+    if (volume > 0 && volume < 100) {
+      debounceAdjustVolume(volume)
+    }
+  }, [debounceAdjustVolume, volume])
+
   const handlePlayPause = () => {
     spotifyApi.getMyCurrentPlaybackState().then(data => {
       if (data.body?.is_playing) {
@@ -42,27 +64,6 @@ const Player = () => {
       }
     })
   }
-
-  useEffect(() => {
-    if (spotifyApi.getAccessToken() && !currentTrackId) {
-      // Fetch the song info
-      fetchCurrentSong()
-      setVolume(50)
-    }
-  }, [currentTrackIdState, spotifyApi, session])
-  
-  useEffect(() => {
-    if (volume > 0 && volume < 100) {
-      debouncedAdjustVolume(volume)
-    }
-  }, [volume])
-
-  const debouncedAdjustVolume = useCallback(
-    debounce((volumeLevel) => {
-      spotifyApi.setVolume(volumeLevel).catch((err) => console.error(err))
-    }, 300),
-    []
-  )
   
   return (
     <div className="
