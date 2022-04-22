@@ -1,7 +1,8 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { getSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
-import Playlists from '../components/Playlists'
+import Player from '../components/Player'
+import Center from '../components/Center'
 import Sidebar from './../components/Sidebar'
 
 const WebGL = dynamic(() => import('./../components/WebGL'), {
@@ -21,8 +22,12 @@ const Home: NextPage = () => {
           border border-solid border-[#ffffff20]"
         >
           <Sidebar />
-          <Playlists />
+          <Center />
         </main>
+        <br />
+        <div>
+          <Player />
+        </div>
       </div>
     </>
     
