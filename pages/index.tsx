@@ -16,7 +16,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Everyone's Radio</title>
-        <link rel="icon" href="/favicon-logo.png" />
+        <link rel="icon" href="/public/favicon-logo.png" />
       </Head>
       <WebGL />
       <div className="h-screen overflow-hidden">
