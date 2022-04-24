@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
   // 1) It's a request for next-auth session & provider fetching
   // 2) requesting public assets
   // 3) the token exists
-  if (pathname.includes('/api/auth') || pathname.includes('/assets') || token) {
+  if (pathname.includes('/api/auth') || token) {
     return NextResponse.next();
   }
 
