@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next'
+import Head from 'next/head'
 import { getSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import Player from '../components/Player'
@@ -13,6 +14,10 @@ const Home: NextPage = () => {
   
   return (
     <>
+      <Head>
+        <title>Everyone's Radio</title>
+        <link rel="icon" href="/favicon-logo.png" />
+      </Head>
       <WebGL />
       <div className="h-screen overflow-hidden">
         <main className="
@@ -30,7 +35,6 @@ const Home: NextPage = () => {
         </div>
       </div>
     </>
-    
   )
 }
 

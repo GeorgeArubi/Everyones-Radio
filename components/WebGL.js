@@ -233,10 +233,6 @@ window.onload = () => {
 const WebGL = () => {
   return (
     <>
-      <Head>
-        <title>Everyone's Radio</title>
-        <link rel="icon" href="/favicon-logo.png" />
-      </Head>
       <canvas className="orb-canvas"></canvas>
     </>
     
