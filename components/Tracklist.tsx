@@ -19,17 +19,22 @@ const Tracklist = () => {
     }
   }, [spotifyApi, playlistId]) // Use playlistId to refetch data
 
-  console.log(playlists)
+  //console.log(playlists)
+
+  const goBack = () => {
+    console.log("Go back")
+  }
 
   return (
     <div className="flex-grow px-5 
     overflow-y-scroll h-full scrollbar-hide relative">
       <div className="absolute py-3 top-5 right-8">
-        <div className="flex items-center hover:opacity-80 cursor-pointer rounded-full 
-        p-1 pr-2">
+        <div className="flex items-center hover:opacity-70 
+                        cursor-pointer rounded-full p-1 pr-2"
+              onClick={goBack}
+        >
           <ArrowSmLeftIcon className="h-5 w-5 mr-1" />
           <h2>Back</h2>
-          
         </div>
       </div>
 
@@ -49,3 +54,5 @@ const Tracklist = () => {
 }
 
 export default Tracklist
+
+
