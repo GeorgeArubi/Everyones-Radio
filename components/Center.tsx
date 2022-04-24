@@ -5,13 +5,11 @@ import Tracklist from './Tracklist'
 const Center = () => {
   const [playlistGrid, setPlaylistGrid] = useState(true)
 
-
   return (
     <>
-    {playlistGrid === true && (
+    {playlistGrid ? (
       <Recommendations selectPlaylist={() => setPlaylistGrid(false)} />
-    )}
-    {playlistGrid === false && (<Tracklist />)}
+    ) : (<Tracklist />)}
     </>
   )
 }
