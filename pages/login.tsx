@@ -14,10 +14,10 @@ function Login({providers}: {providers: InferGetServerSidePropsType<typeof getSe
       <div className="overlay">
         <div className="overlay__inner">
           <h1 className="overlay__title text-gradient">Everyone's Radio (Beta)</h1>
-          <p className="overlay__description">
+          <p className="overlay__description justify-center">
             Enhancing Playlist Recommendations & Music Discovery
           </p>
-        <div className="overlay__btns">
+        <div className="overlay__btns justify-center">
           {providers &&
             (Object.values(providers) as unknown as ClientSafeProvider[]).map((provider: ClientSafeProvider) => (
               <div className="overlay__btn" key={provider.name}>
