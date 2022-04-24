@@ -66,11 +66,12 @@ const Sidebar = () => {
         <hr className='border-t-[0.1px] border-gray-900' />
 
         <div>
-          <h1>About This Project</h1>
+          <h1 className="font-bold text-xl">About This Project</h1>
           <p className="overlay__description">
-              Hey @username, thank you for signing up for our playlist recommendation service (thank you message).
-              Add user's profile picture in the top right corner.
-              Add Playlist Cover; Playlist Name should be below the cover.
+              Everyone's Radio started as a passion project meant to curate
+              personal sonic experiences for a few friends. Today, it represents 
+              a deep dive into the sub-communities that drive user-to-user activity 
+              on music streaming platforms.
           </p>
         </div>
         
