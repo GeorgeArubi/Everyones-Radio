@@ -12,7 +12,7 @@ async function refreshAccessToken(token: JWT) {
     spotifyAPI.setRefreshToken(token.refreshToken as string)
 
     const { body: refreshToken } = await spotifyAPI.refreshAccessToken()
-    console.log('refreshToken: ', refreshToken)
+    //console.log('refreshToken: ', refreshToken)
 
     return {
       ...token,
@@ -21,7 +21,7 @@ async function refreshAccessToken(token: JWT) {
       refreshToken: refreshToken.refresh_token ?? token.refreshToken, // fallback to the old refresh token if the new one is not returned.
     }
   } catch (error) {
-    console.log(error)
+    //console.log(error)
     return {
       ...token,
       error: 'RefreshAccessTokenError',
@@ -56,10 +56,7 @@ export default NextAuth({
         }
 
       // Return previous token if the access token is still valid.
-      if (
-        token &&
-        token.accessTokenExpires &&
-        Date.now() < (token.accessTokenExpires as number)
+      if (Date.now() < (token.accessTokenExpires as number)
       ) {
         return token
       }
