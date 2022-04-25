@@ -102,7 +102,7 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
           {playlists.map((p: any) => (
             <div className="w-full rounded" key={p.id}>
               <img 
-                className="w-44 h-44 cursor-pointer hover:text-white"
+                className="w-40 h-40 cursor-pointer hover:text-white"
                 onClick={() => {setPlaylistId(p.id); props.selectPlaylist()}} 
                 
                 src={p?.images?.[0].url} 
