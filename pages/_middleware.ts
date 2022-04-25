@@ -16,7 +16,9 @@ export async function middleware(req: NextRequest) {
   }
 
   // Redirect them to login if they don't have token AND are requesting a protected route
+  const loginURL = req.nextUrl.clone()
+  loginURL.pathname = '/login'
   if (!token && pathname !== '/login') {
-    return NextResponse.redirect('/login');
+    return NextResponse.redirect(loginURL);
   }
 }
