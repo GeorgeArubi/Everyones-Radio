@@ -22,6 +22,7 @@ const Tracklist = () => {
   //console.log(playlists)
 
   const goBack = () => {
+    // Use redux to go to previous component state
     console.log("Go back")
   }
 
