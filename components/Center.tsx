@@ -9,7 +9,7 @@ const Center = () => {
     <>
     {playlistGrid ? (
       <Recommendations selectPlaylist={() => setPlaylistGrid(false)} />
-    ) : (<Tracklist />)}
+    ) : (<Tracklist setPlaylistGrid={setPlaylistGrid}/>)}
     </>
   )
 }

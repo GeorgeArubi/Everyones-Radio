@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { playlistIdState } from '../atoms/playlistAtoms';
 import useSpotify from '../hooks/useSpotify';
 
-const Tracklist = () => {
+const Tracklist = (props: any) => {
   const spotifyApi = useSpotify();
   const playlistId = useRecoilValue(playlistIdState);
   const [playlists, setPlaylists] = useState<SpotifyApi.SinglePlaylistResponse>();
@@ -21,11 +21,14 @@ const Tracklist = () => {
 
   //console.log(playlists)
 
+  useEffect(() => {
+    props.setPlaylistGrid(false)
+  }, [])
+  
   const goBack = () => {
-    // Use redux to go to previous component state
-    console.log("Go back")
+    props.setPlaylistGrid(true)
   }
-
+  
   return (
     <div className="flex-grow px-5 
     overflow-y-scroll h-full scrollbar-hide relative">
