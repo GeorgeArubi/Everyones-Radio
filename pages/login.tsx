@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import {InferGetServerSidePropsType} from 'next';
 import { ClientSafeProvider, getProviders, signIn } from 'next-auth/react'
 import dynamic from 'next/dynamic'
@@ -10,6 +11,10 @@ const WebGL = dynamic(() => import('../components/WebGL'), {
 function Login({providers}: {providers: InferGetServerSidePropsType<typeof getServerSideProps>}) {
   return (
     <>
+      <Head>
+        <title>Everyone's Radio</title>
+        <link rel="icon" href="/favicon-logo.png" />
+      </Head>
       <WebGL />
       <div className="overlay">
         <div className="overlay__inner">
