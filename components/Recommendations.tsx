@@ -11,6 +11,7 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
   const [_playlistInfo, setPlaylistInfo] = useState<SpotifyApi.SinglePlaylistResponse>();
   
+  /*
   useEffect(() => {
     const offsetArr = [0, 50];
     const playlistBatch: any[] = [];
@@ -33,30 +34,43 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
       })
     }
   }, [session, setPlaylistId, spotifyApi])
+  */
   //console.log("You picked playlist >>>", playlistId)
   
-  /*
+
   // Dummy Data
   useEffect(() => {
     const testData: string[] = [
-      '1DB96uvtjyakkiDxD7M1Zh',
-      '7ozFIvz1bE1HPgQTUl5qfT',
-      '4VdVH8e7BY4ESSdxa9ehK5',
-      '6s2bP0um1MLKog2aVdlqHt',
-      '1Bi23brRTBv0YfrrTYeaPC',
-      '4BPUhIizaCtpybYPz5EhCL',
-      '6DokzCTQ0UGh0ItaZBZrXC',
-      '6rpGWCNHsDXtqNv38xXgNS',
-      '58c4OKKyny03xYbw1wVl40',
-      '25OZXSdB5cpVG8xLoSEjyU',
-      '19p2VsvSMpyhkv6Tvdo20e',
-      '3NCJ6ihYk8yChkkwkvJxGr',
-      '6MPXVrcMxxB1zXq3fCHbpS',
-      '25fGd8uIFS2nS5DVJSf26s',
-      '3QQYDqtqBIzvXbbWgoKcxR',
-      '41c31jLpWNQEctdxktBtHX',
-      '3SvOnq7F7S1ONLVKQDRr7F',
-      '7lD1Z8qDWH4AvguNiiEgov',
+      '4Gd4YlH3gwtRVHZWrVsZIv',
+      '1AAzzQhqBXeqkyJtpsZBEq',
+      '2cAlhm9AxBKybXWBJKtdC2',
+      '1ipj4KhuYfLyeyr9vG7E6A',
+      '04rG4KAC8lM5qmZIHfzJof',
+      '3tvJsMAKDhCLZlGJxH4mD1',
+      '2eaaT7LfCFYaxc62XDjBL2',
+      '6UHXaDvv5UeTyftXsJkOwN',
+      '0tOFJr7pNzkOesSn42JfPR',
+      '5BnWGnUkYjbgoRHaZ9KR2o',
+      '2w0UIBth3OfD0KaPPcUAGe',
+      '1AZpiUANyjc6tBp6BEAkPX',
+      '7GYbxlNnEGPeD86fQKzQCt',      
+      '4nZkPyO4Yy6BRXokAp4noB',
+      '7crEGwAdRV2XVlTTNzKa5g',
+      '47E4W78gH9PsAYhHId4WzJ',
+      '0m3ntFblZlX9VS38nztuHT',
+      '6IIVKviuvW4y8ovvtXHeaF',
+      '02NrfpkVPsaQQyo48EUaBx',
+      '1FXuPom1km8RCEosyZRx96',
+      '25KdtFXksMZ6fD1ml6FB4J',
+      '1LZ43rNkcLtTub7e85lDYX',
+      '6zB8QzwHk93nBSQwymnzUo',
+      '2qGQkMpAAUH7twKIMcFLjd',
+      '4YnAzQiqTmvTYNqcpV7yr4',
+      '4Xx47LYU9cn8ld6tuioLXv',
+      '4mTmFiatNEoEBQeQIKlybh',
+      '0yNAnsGbpFmLA6WYvLHNKG',
+      '45vg9zEa1HwTnMppWIDi2n',
+      '71uAiEwZdZSTFoqnfTFEqA'
     ]
     const totalTestSet: any[] = []
     if (spotifyApi.getAccessToken()) {
@@ -69,9 +83,7 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
           })
       })
     }  
-  }, [session, setPlaylistId, spotifyApi])
- */
-  
+  }, [session, setPlaylistId, spotifyApi])  
 
   // Get playlist info to be passed to playlist component
   useEffect(() => {
