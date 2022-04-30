@@ -1,9 +1,11 @@
+# Notes, Features, Bugs & Improvements #
+
 Can I use Recoil to store recommended playlists? 
 - i.e. an atom for an array of playlist id returned by the recommender
 
 Add postgresql to collect user data and playlist data when user logs in
 
-Include BPM for songs because we want this pp to be helpful to DJs as well
+Include BPM for songs because we want this app to be helpful to DJs as well
 
 How are we going to deploy the recommender model so that...
 - we can send requests from the app through an API
@@ -12,6 +14,16 @@ How are we going to deploy the recommender model so that...
 
 Fix screen breakpoints for the application
 
-Fix back button on the tracklist page
+Set standard screen width for the application:
+- So that the width doesn't change when objects are clicked/rendered
+- This will also mean resizing some text elements
+
+Add external playlist link to each playlist
 
 Add user name and playlist title to each playlist tile on the recommendations page
+
+Our current recommendation model uses content-based filtering:
+- Content-based filtering is a technique for finding similar items in a dataset
+- Thaker's model uses a playlist vector to summarize the songs in a playlist
+- We should update the model to create a playlist vector for each playlist and use this to find similar playlists
+- How can we connect our model to a postgresql database?
