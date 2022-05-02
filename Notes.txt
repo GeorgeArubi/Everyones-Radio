@@ -14,6 +14,9 @@ How are we going to deploy the recommender model so that...
 
 Fix screen breakpoints for the application
 
+Can I cache the playlists that have been rendered in the app?
+- So that we don't have to render them again whenever the page is refreshed.
+
 Set standard screen width for the application:
 - So that the width doesn't change when objects are clicked/rendered
 - This will also mean resizing some text elements
