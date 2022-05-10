@@ -30,3 +30,5 @@ Our current recommendation model uses content-based filtering:
 - Thaker's model uses a playlist vector to summarize the songs in a playlist
 - We should update the model to create a playlist vector for each playlist and use this to find similar playlists
 - How can we connect our model to a postgresql database?
+
+So help me God.
