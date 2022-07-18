@@ -3,7 +3,12 @@
 Can I use Recoil to store recommended playlists? 
 - i.e. an atom for an array of playlist id returned by the recommender
 
-Add postgresql to collect user data and playlist data when user logs in
+Add postgresql to collect user data and playlist data when user logs in:
+- user_id, user_name, user_playlists
+- Create  a data schema for users & for playlists
+- This app will also be using multiple databases through Prisma (Relational & NoSQL) 
+- How are we managing states in this app? via Recoil
+- Use async awaits instead of promises
 
 Include BPM for songs because we want this app to be helpful to DJs as well
 
