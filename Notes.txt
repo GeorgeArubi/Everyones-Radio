@@ -1,26 +1,17 @@
 # Notes, Features, Bugs & Improvements #
 
-Can I use Recoil to store recommended playlists? 
-- i.e. an atom for an array of playlist id returned by the recommender
+
+# To-Do:
+# ---------------------------------------- #
+
+Update README
 
 Add postgresql to collect user data and playlist data when user logs in:
 - user_id, user_name, user_playlists
 - Create  a data schema for users & for playlists
 - This app will also be using multiple databases through Prisma (Relational & NoSQL) 
-- How are we managing states in this app? via Recoil
-- Use async awaits instead of promises
 
-Include BPM for songs because we want this app to be helpful to DJs as well
-
-How are we going to deploy the recommender model so that...
-- we can send requests from the app through an API
-- we can share access tokens with the recommender
-- when user x logs in, the recommender suggests playlists for user x
-
-Fix screen breakpoints for the application
-
-Can I cache the playlists that have been rendered in the app?
-- So that we don't have to render them again whenever the page is refreshed.
+Use async awaits instead of promises
 
 Set standard screen width for the application:
 - So that the width doesn't change when objects are clicked/rendered
@@ -30,10 +21,43 @@ Add external playlist link to each playlist
 
 Add user name and playlist title to each playlist tile on the recommendations page
 
+Disable y-scroll on web page
+
+Fix screen breakpoints for the application
+
+# Notes:
+# ---------------------------------------- #
+
+How are we going to deploy the recommender model so that...
+- we can send requests from the app through an API
+- we can share access tokens with the recommender
+- when user x logs in, the recommender suggests playlists for user x
+
+Can I cache the playlists that have been rendered in the app?
+- So that we don't have to render them again whenever the page is refreshed.
+- How are we managing states in this app? via Recoil
+
 Our current recommendation model uses content-based filtering:
 - Content-based filtering is a technique for finding similar items in a dataset
 - Thaker's model uses a playlist vector to summarize the songs in a playlist
 - We should update the model to create a playlist vector for each playlist and use this to find similar playlists
 - How can we connect our model to a postgresql database?
+
+How are we going to keep track of the user's recommendations and liked playlists?
+
+# New Features:
+# ---------------------------------------- #
+
+Include BPM for songs because we want this app to be helpful to DJs as well
+
+Add Apple Music Integration + Authentication
+
+Allow users to convert and save playlists to their library (Apple Music, Spotify, etc.)
+
+Create user profiles so that:
+- Each user can follow other users
+- Each user can add playlists to their library (i.e, on Everyone's Radio)
+
+
 
 So help me God.
