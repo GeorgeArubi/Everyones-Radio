@@ -58,6 +58,23 @@ Create user profiles so that:
 - Each user can follow other users
 - Each user can add playlists to their library (i.e, on Everyone's Radio)
 
+# Resources:
+# ---------------------------------------- #
+
+How to Build a Full Stack App w/ Next.js, PostgreSQL & Prisma
+- https://vercel.com/guides/nextjs-prisma-postgres
+- https://github.com/prisma/blogr-nextjs-prisma/tree/final
+
+PostgreSQL + Heroku Account:
+- https://id.heroku.com/login
+
+How to Build a Web Scraper Microservice:
+- https://medium.com/hackernoon/microservice-series-scraper-ee970df3e81f
+- https://www.youtube.com/watch?v=DxET43rUkig&ab_channel=RCCoding
+
+
+
+
 
 
 So help me God.
