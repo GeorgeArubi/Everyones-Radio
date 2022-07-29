@@ -9,36 +9,9 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
   const spotifyApi = useSpotify();
   const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[]>([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
-  const [_playlistInfo, setPlaylistInfo] = useState<SpotifyApi.SinglePlaylistResponse>();
-  
-  /*
-  useEffect(() => {
-    const offsetArr = [0, 50];
-    const playlistBatch: any[] = [];
-    if (spotifyApi.getAccessToken()) {
-      // Get the authenticated user
-      spotifyApi.getMe()
-      .then(function(userData) {
-        const userId = userData.body.id
-        // Get the first 100 playlists in the user's library
-        offsetArr.forEach((item) => {
-          spotifyApi.getUserPlaylists({offset: item, limit: 50}).then((data) => {
-            // Get playlists where playlists.owner.id === session.user.username
-            const userPlaylists = data.body.items.filter((playlist) => playlist.owner.id === userId);                
-            playlistBatch.push(userPlaylists)
-            // Put playlists into state
-            const totalPlaylists = [].concat(...playlistBatch);
-            setPlaylists(totalPlaylists);
-          });
-        })
-      })
-    }
-  }, [session, setPlaylistId, spotifyApi])
-  */
-  //console.log("You picked playlist >>>", playlistId)
-  
+  const [_playlistInfo, setPlaylistInfo] = useState<SpotifyApi.SinglePlaylistResponse>();  
 
-  // Dummy Data
+  // Dummy Data => Postgres Integration
   useEffect(() => {
     const testData: string[] = [
       '4Gd4YlH3gwtRVHZWrVsZIv',
