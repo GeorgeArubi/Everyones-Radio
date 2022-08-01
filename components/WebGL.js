@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import * as PIXI from 'pixi.js';
 import { KawaseBlurFilter } from '@pixi/filter-kawase-blur';
 import SimplexNoise from 'simplex-noise';
