@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react'
 import { useRecoilState } from 'recoil';
 import { playlistIdState } from '../atoms/playlistAtoms';
 import useSpotify from '../hooks/useSpotify';
+import { fetchData } from 'next-auth/client/_utils';
 
 const Recommendations = (props: { selectPlaylist: any; }) => {
   const { data: session } = useSession()
@@ -12,60 +13,65 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
   const [_playlistInfo, setPlaylistInfo] = useState<SpotifyApi.SinglePlaylistResponse>();  
 
   // Dummy Data => Postgres Integration
+  const testData: string[] = [
+    '4Gd4YlH3gwtRVHZWrVsZIv',
+    '1AAzzQhqBXeqkyJtpsZBEq',
+    '2cAlhm9AxBKybXWBJKtdC2',
+    '1ipj4KhuYfLyeyr9vG7E6A',
+    '04rG4KAC8lM5qmZIHfzJof',
+    '3tvJsMAKDhCLZlGJxH4mD1',
+    '2eaaT7LfCFYaxc62XDjBL2',
+    '6UHXaDvv5UeTyftXsJkOwN',
+    '0tOFJr7pNzkOesSn42JfPR',
+    '5BnWGnUkYjbgoRHaZ9KR2o',
+    '2w0UIBth3OfD0KaPPcUAGe',
+    '1AZpiUANyjc6tBp6BEAkPX',
+    '7GYbxlNnEGPeD86fQKzQCt',      
+    '4nZkPyO4Yy6BRXokAp4noB',
+    '7crEGwAdRV2XVlTTNzKa5g',
+    '47E4W78gH9PsAYhHId4WzJ',
+    '0m3ntFblZlX9VS38nztuHT',
+    '6IIVKviuvW4y8ovvtXHeaF',
+    '02NrfpkVPsaQQyo48EUaBx',
+    '1FXuPom1km8RCEosyZRx96',
+    '25KdtFXksMZ6fD1ml6FB4J',
+    '1LZ43rNkcLtTub7e85lDYX',
+    '6zB8QzwHk93nBSQwymnzUo',
+    '2qGQkMpAAUH7twKIMcFLjd',
+    '4YnAzQiqTmvTYNqcpV7yr4',
+    '4Xx47LYU9cn8ld6tuioLXv',
+    '4mTmFiatNEoEBQeQIKlybh',
+    '0yNAnsGbpFmLA6WYvLHNKG',
+    '45vg9zEa1HwTnMppWIDi2n',
+    '71uAiEwZdZSTFoqnfTFEqA'
+  ]
   useEffect(() => {
-    const testData: string[] = [
-      '4Gd4YlH3gwtRVHZWrVsZIv',
-      '1AAzzQhqBXeqkyJtpsZBEq',
-      '2cAlhm9AxBKybXWBJKtdC2',
-      '1ipj4KhuYfLyeyr9vG7E6A',
-      '04rG4KAC8lM5qmZIHfzJof',
-      '3tvJsMAKDhCLZlGJxH4mD1',
-      '2eaaT7LfCFYaxc62XDjBL2',
-      '6UHXaDvv5UeTyftXsJkOwN',
-      '0tOFJr7pNzkOesSn42JfPR',
-      '5BnWGnUkYjbgoRHaZ9KR2o',
-      '2w0UIBth3OfD0KaPPcUAGe',
-      '1AZpiUANyjc6tBp6BEAkPX',
-      '7GYbxlNnEGPeD86fQKzQCt',      
-      '4nZkPyO4Yy6BRXokAp4noB',
-      '7crEGwAdRV2XVlTTNzKa5g',
-      '47E4W78gH9PsAYhHId4WzJ',
-      '0m3ntFblZlX9VS38nztuHT',
-      '6IIVKviuvW4y8ovvtXHeaF',
-      '02NrfpkVPsaQQyo48EUaBx',
-      '1FXuPom1km8RCEosyZRx96',
-      '25KdtFXksMZ6fD1ml6FB4J',
-      '1LZ43rNkcLtTub7e85lDYX',
-      '6zB8QzwHk93nBSQwymnzUo',
-      '2qGQkMpAAUH7twKIMcFLjd',
-      '4YnAzQiqTmvTYNqcpV7yr4',
-      '4Xx47LYU9cn8ld6tuioLXv',
-      '4mTmFiatNEoEBQeQIKlybh',
-      '0yNAnsGbpFmLA6WYvLHNKG',
-      '45vg9zEa1HwTnMppWIDi2n',
-      '71uAiEwZdZSTFoqnfTFEqA'
-    ]
     const totalTestSet: any[] = []
-    if (spotifyApi.getAccessToken()) {
-      testData.forEach((testPlaylist) => {
-        spotifyApi.getPlaylist(testPlaylist).then(function(data) {
-          totalTestSet.push(data.body);
+    const fetchData = async () => {
+      for (let testPlaylist of testData) {
+        if (spotifyApi.getAccessToken()) {
+          const response = await spotifyApi.getPlaylist(testPlaylist)
+          totalTestSet.push(response.body)
           // Put playlists into state
           const totalPlaylists = [].concat(...totalTestSet);
           setPlaylists(totalPlaylists);
-          })
-      })
-    }  
+        }
+      }
+    }
+    fetchData()
+    .catch(console.error)  
   }, [session, setPlaylistId, spotifyApi])  
 
   // Get playlist info to be passed to playlist component
   useEffect(() => {
-    if (playlistId) {
-      spotifyApi.getPlaylist(playlistId).then(data => {
-        setPlaylistInfo(data.body)
-      })
-      .catch((err) => console.log("Something went wrong", err))
+    const fetchPlaylists = async () => {
+      if (playlistId) {
+        const response = await spotifyApi.getPlaylist(playlistId);
+        setPlaylistInfo(response.body)
+      }
     }
+    fetchPlaylists()
+    .catch((err) => console.log("Something went wrong", err));
   }, [spotifyApi, playlistId]) // Use playlistId to refetch data
   //console.log(playlist)
 
