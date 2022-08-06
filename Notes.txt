@@ -14,7 +14,7 @@ Add postgresql to collect user data and playlist data when user logs in:
 Use async/awaits instead of promises:
 - Add pagination to improve the rendering speed of the recommendations page
 - Use a different data structure to store playlist ID's (instead of an array)
-- How can we speed up the home page?
+- How can we speed up the home page? Or add a loading screen while the data is being fetched?
 
 Set standard screen width for the application:
 - So that the width doesn't change when objects are clicked/rendered
