@@ -11,7 +11,10 @@ Add postgresql to collect user data and playlist data when user logs in:
 - Create  a data schema for users & for playlists
 - This app will also be using multiple databases through Prisma (Relational & NoSQL) 
 
-Use async/awaits instead of promises
+Use async/awaits instead of promises:
+- Add pagination to improve the rendering speed of the recommendations page
+- Use a different data structure to store playlist ID's (instead of an array)
+- How can we speed up the home page?
 
 Set standard screen width for the application:
 - So that the width doesn't change when objects are clicked/rendered
@@ -24,8 +27,6 @@ Add user name and playlist title to each playlist tile on the recommendations pa
 Disable y-scroll on web page
 
 Fix screen breakpoints for the application
-
-Add pagination to improve the rendering speed of the recommendations page
 
 # Notes:
 # ---------------------------------------- #
