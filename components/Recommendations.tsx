@@ -48,13 +48,11 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
   useEffect(() => {
     const totalTestSet: any[] = []
     const fetchData = async () => {
-      for (let testPlaylist of testData) {
-        if (spotifyApi.getAccessToken()) {
+      if (spotifyApi.getAccessToken()) {
+        for (let testPlaylist of testData) {
           const response = await spotifyApi.getPlaylist(testPlaylist)
           totalTestSet.push(response.body)
-          // Put playlists into state
-          const totalPlaylists = [].concat(...totalTestSet);
-          setPlaylists(totalPlaylists);
+          setPlaylists(totalTestSet);
         }
       }
     }
