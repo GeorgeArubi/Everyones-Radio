@@ -52,7 +52,8 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
         if (spotifyApi.getAccessToken()) {
           const response = await spotifyApi.getPlaylist(testPlaylist)
           totalTestSet.push(response.body)
-          setPlaylists(totalTestSet);
+          const totalPlaylist = [].concat(...totalTestSet)
+          setPlaylists(totalPlaylist);
         }
       }
     }
