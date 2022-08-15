@@ -30,7 +30,7 @@
     "@types/react": "17.0.38",
     "@types/spotify-web-api-node": "^5.0.7",
     "autoprefixer": "^10.4.8",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.1",
     "prisma": "^4.2.1",
