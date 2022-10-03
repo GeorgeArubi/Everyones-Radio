@@ -42,7 +42,6 @@ export default Home
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);
-
   return {
     props: {session},
   };
