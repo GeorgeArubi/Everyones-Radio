@@ -33,6 +33,8 @@ Fix screen breakpoints for the application
 # Notes:
 # ---------------------------------------- #
 
+Would like to open source the recommender model (best way to leverage AI/ML?)
+
 How are we going to deploy the recommender model so that...
 - we can send requests from the app through an API
 - we can share access tokens with the recommender
