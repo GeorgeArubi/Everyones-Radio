@@ -40,8 +40,8 @@ const Player = () => {
   }, [currentTrackIdState, fetchCurrentSong, spotifyApi, session])
 
   const debounceAdjustVolume = useCallback(
-    (volumeLevel) =>
-      debounce((volumeLevel: any) => {
+    (volumeLevel: number) =>
+      debounce((volumeLevel: number) => {
        spotifyApi.setVolume(volumeLevel).catch((err) => console.error(err))
       }, 300)(volumeLevel),
     [spotifyApi]
