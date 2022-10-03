@@ -30,7 +30,7 @@ async function refreshAccessToken(token: JWT) {
 }
 
 export default NextAuth({
-  // Configure one or more authentication providers
+  // Configure authentication provider(s)
   providers: [
     SpotifyProvider({
       clientId: process.env.NEXT_PUBLIC_CLIENT_ID!,
@@ -54,19 +54,16 @@ export default NextAuth({
           username: account.providerAccountId,
           accessTokenExpiresAt: account.expires_at! * 1000, // Handle in milliseconds
         }
-
       // Return previous token if the access token is still valid.
       if (Date.now() < (token.accessTokenExpires as number)) {
         return token
       }
 
-      // Access Token expired. Refresh token.
-      //console.log('Access Token expired. Refreshing token...')
-      // @ts-ignore
+      // Access token expired, refresh token.
       return refreshAccessToken(token)
     },
     async session({ session, token }) {
-      session.accessToken = token.accessToken // token.access token is HTTP only. Cannot be accessed by client. directly.
+      session.accessToken = token.accessToken // The token is HTTP only and cannot be accessed by client directly.
       session.refreshToken = token.refreshToken
       session.username = token.username
 
