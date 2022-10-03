@@ -8,7 +8,7 @@ const WebGL = dynamic(() => import('../components/WebGL'), {
   ssr: false
 })
 
-function Login({providers}: {providers: InferGetServerSidePropsType<typeof getServerSideProps>}) {
+const Login = ({providers}: {providers: InferGetServerSidePropsType<typeof getServerSideProps>}) => {
   return (
     <>
       <Head>
@@ -28,8 +28,6 @@ function Login({providers}: {providers: InferGetServerSidePropsType<typeof getSe
               <div className="overlay__btn" key={provider.name}>
                 <button
                   onClick={() => {
-                    // https://developer.spotify.com/dashboard/applications/0e3eff139050415a9635bc8e4394622a
-                    // Spotify settings redirect uris: http://localhost:3000/api/auth/callback/spotify
                     signIn(provider.id, {callbackUrl: '/'});
                   }}
                 >
@@ -46,6 +44,7 @@ function Login({providers}: {providers: InferGetServerSidePropsType<typeof getSe
 
 export default Login
 
+// Server-side render to get all the providers
 export const getServerSideProps = async () => {
   const providers = await getProviders()
   return {
