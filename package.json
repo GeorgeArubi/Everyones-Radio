@@ -29,7 +29,7 @@
     "@types/node": "18.7.17",
     "@types/react": "18.0.21",
     "@types/spotify-web-api-node": "^5.0.7",
-    "autoprefixer": "^10.4.8",
+    "autoprefixer": "^10.4.12",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
