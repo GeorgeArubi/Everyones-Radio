@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { useRecoilState } from 'recoil';
-import { playlistIdState } from '../atoms/playlistAtoms';
-import useSpotify from '../hooks/useSpotify';
-import { fetchData } from 'next-auth/client/_utils';
+import { useRecoilState } from 'recoil'
+import { playlistIdState } from '../atoms/playlistAtoms'
+import useSpotify from '../hooks/useSpotify'
+import { fetchData } from 'next-auth/client/_utils'
 
-const Recommendations = (props: { selectPlaylist: any; }) => {
+const Recommendations = (props: { selectPlaylist: any }) => {
   const { data: session } = useSession()
-  const spotifyApi = useSpotify();
-  const [playlists, setPlaylists] = useState<SpotifyApi.PlaylistObjectSimplified[]>([]);
-  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
-  const [_playlistInfo, setPlaylistInfo] = useState<SpotifyApi.SinglePlaylistResponse>();  
+  const spotifyApi = useSpotify()
+  const [playlists, setPlaylists] = useState<
+    SpotifyApi.PlaylistObjectSimplified[]
+  >([])
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState)
+  const [_playlistInfo, setPlaylistInfo] =
+    useState<SpotifyApi.SinglePlaylistResponse>()
 
-  // Dummy Data => Postgres Integration
+  // Dummy Data => Integrate User Playlist API Here:
   const testData: string[] = [
     '4Gd4YlH3gwtRVHZWrVsZIv',
     '1AAzzQhqBXeqkyJtpsZBEq',
@@ -26,7 +29,7 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
     '5BnWGnUkYjbgoRHaZ9KR2o',
     '2w0UIBth3OfD0KaPPcUAGe',
     '1AZpiUANyjc6tBp6BEAkPX',
-    '7GYbxlNnEGPeD86fQKzQCt',      
+    '7GYbxlNnEGPeD86fQKzQCt',
     '4nZkPyO4Yy6BRXokAp4noB',
     '7crEGwAdRV2XVlTTNzKa5g',
     '47E4W78gH9PsAYhHId4WzJ',
@@ -43,7 +46,7 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
     '4mTmFiatNEoEBQeQIKlybh',
     '0yNAnsGbpFmLA6WYvLHNKG',
     '45vg9zEa1HwTnMppWIDi2n',
-    '71uAiEwZdZSTFoqnfTFEqA'
+    '71uAiEwZdZSTFoqnfTFEqA',
   ]
   useEffect(() => {
     const totalTestSet: any[] = []
@@ -53,50 +56,50 @@ const Recommendations = (props: { selectPlaylist: any; }) => {
           const response = await spotifyApi.getPlaylist(testPlaylist)
           totalTestSet.push(response.body)
           const totalPlaylist = [].concat(...totalTestSet)
-          setPlaylists(totalPlaylist);
+          setPlaylists(totalPlaylist)
         }
       }
     }
-    fetchData()
-    .catch(console.error)  
-  }, [session, setPlaylistId, spotifyApi])  
+    fetchData().catch(console.error)
+  }, [session, setPlaylistId, spotifyApi])
 
   // Get playlist info to be passed to playlist component
   useEffect(() => {
     const fetchPlaylists = async () => {
       if (playlistId) {
-        const response = await spotifyApi.getPlaylist(playlistId);
+        const response = await spotifyApi.getPlaylist(playlistId)
         setPlaylistInfo(response.body)
       }
     }
-    fetchPlaylists()
-    .catch((err) => console.log("Something went wrong", err));
+    fetchPlaylists().catch((err) => console.log('Something went wrong', err))
   }, [spotifyApi, playlistId]) // Use playlistId to refetch data
   //console.log(playlist)
 
   return (
-    <div className="p-5 overflow-y-scroll h-full scrollbar-hide">
+    <div className="h-full overflow-y-scroll p-5 scrollbar-hide">
       <div className="overlay__inner">
-        <div className="pb-8 relative">
+        <div className="relative pb-8">
           <h1 className="overlay__title">Your Recommendations</h1>
-            <div className="absolute top-1 right-1">
-                <img 
-                  className="rounded-full w-16 h-16" 
-                  src={session?.user?.image || ''}  
-                  alt=""
-                />
-            </div>
+          <div className="absolute top-1 right-1">
+            <img
+              className="h-16 w-16 rounded-full"
+              src={session?.user?.image || ''}
+              alt=""
+            />
+          </div>
         </div>
-      
-        <div className="container space-y-2 lg:space-y-0 lg:gap-2 lg:grid lg:grid-cols-3 ">
+
+        <div className="container space-y-2 lg:grid lg:grid-cols-3 lg:gap-2 lg:space-y-0 ">
           {playlists.map((p: any) => (
             <div className="w-full rounded" key={p.id}>
-              <img 
-                className="w-40 h-40 cursor-pointer hover:text-white"
-                onClick={() => {setPlaylistId(p.id); props.selectPlaylist()}} 
-                
-                src={p?.images?.[0].url} 
-                alt="playlist image" 
+              <img
+                className="h-40 w-40 cursor-pointer hover:text-white"
+                onClick={() => {
+                  setPlaylistId(p.id)
+                  props.selectPlaylist()
+                }}
+                src={p?.images?.[0].url}
+                alt="playlist image"
               />
             </div>
           ))}
