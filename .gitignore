@@ -19,7 +19,7 @@
 .DS_Store
 *.pem
 .vscode
-/.txt
+Notes.txt
 
 # debug
 npm-debug.log*
