@@ -123,6 +123,8 @@ Our current recommendation model uses content-based filtering:
 
 How are we going to keep track of the user's recommendations and liked playlists?
 
+tRPC? (https://trpc.io/)
+
 # New Features:
 # ---------------------------------------- #
 
