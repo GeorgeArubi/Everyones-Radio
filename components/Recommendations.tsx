@@ -15,7 +15,9 @@ const Recommendations = (props: { selectPlaylist: any }) => {
   const [_playlistInfo, setPlaylistInfo] =
     useState<SpotifyApi.SinglePlaylistResponse>()
 
-  // Dummy Data => Integrate User Playlist API Here:
+  /* This block of code should return a map of the playlist id and songs in the playlist
+  * Dummy Data => Integrate User Playlist API Here:
+  */
   const testData: string[] = [
     '4Gd4YlH3gwtRVHZWrVsZIv',
     '1AAzzQhqBXeqkyJtpsZBEq',
@@ -48,6 +50,7 @@ const Recommendations = (props: { selectPlaylist: any }) => {
     '45vg9zEa1HwTnMppWIDi2n',
     '71uAiEwZdZSTFoqnfTFEqA',
   ]
+  
   useEffect(() => {
     const totalTestSet: any[] = []
     const fetchData = async () => {
