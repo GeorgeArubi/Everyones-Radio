@@ -63,9 +63,9 @@ export default NextAuth({
       return refreshAccessToken(token)
     },
     async session({ session, token }) {
-      session.accessToken = token.accessToken // The token is HTTP only and cannot be accessed by client directly.
-      session.refreshToken = token.refreshToken
-      session.username = token.username
+      session.accessToken = token.accessToken as string // The token is HTTP only and cannot be accessed by client directly.
+      session.refreshToken = token.refreshToken as string
+      session.username = token.username as string
 
       return session
     },
