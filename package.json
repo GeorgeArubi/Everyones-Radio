@@ -26,7 +26,7 @@
     "@types/debounce": "^1.2.1",
     "@types/hsl-to-hex": "^1.0.0",
     "@types/lodash": "^4.14.191",
-    "@types/node": "20.1.1",
+    "@types/node": "20.4.5",
     "@types/react": "18.0.21",
     "@types/spotify-web-api-node": "^5.0.7",
     "autoprefixer": "^10.4.13",
